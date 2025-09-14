@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: tech_chat_user
+  password: "seed1388"
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: pictweet_development
+
+test:
+  <<: *default
+  database: pictweet_test
+
+production:
+  <<: *default
+  database: pictweet_production
+  username: tech_chat_user
+  password: <%= ENV["PICTWEET_DATABASE_PASSWORD"] %>
